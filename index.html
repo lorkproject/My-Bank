@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KhmerBank — Account System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <header>
+    <div class="logo">KB</div>
+    <div class="header-title">
+      <span class="bank-name">KhmerBank</span>
+      <span class="bank-sub">Prototype Inheritance Demo</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- Account Cards -->
+    <div class="accounts-grid">
+
+      <!-- Checking -->
+      <div class="account-card" id="card-checking">
+        <div class="card-tag">Checking</div>
+        <div class="card-number" id="num-checking">ACC-001</div>
+        <div class="card-owner" id="owner-checking">Vanna</div>
+        <div class="balance-label">Available Balance</div>
+        <div class="balance-amount" id="bal-checking">$1,000.00</div>
+        <div class="card-actions">
+          <input type="number" id="inp-checking" placeholder="Enter amount" min="1" />
+          <div class="btn-row">
+            <button class="btn-dep" onclick="act('checking','deposit')">Deposit</button>
+            <button class="btn-wd" onclick="act('checking','withdraw')">Withdraw</button>
+          </div>
+        </div>
+        <div class="msg" id="msg-checking"></div>
+      </div>
+
+      <!-- Savings -->
+      <div class="account-card savings" id="card-savings">
+        <div class="card-tag">Savings <span class="interest-badge">3% APY</span></div>
+        <div class="card-number" id="num-savings">ACC-002</div>
+        <div class="card-owner" id="owner-savings">Vanna</div>
+        <div class="balance-label">Available Balance</div>
+        <div class="balance-amount" id="bal-savings">$500.00</div>
+        <div class="card-actions">
+          <input type="number" id="inp-savings" placeholder="Enter amount" min="1" />
+          <div class="btn-row">
+            <button class="btn-dep" onclick="act('savings','deposit')">Deposit</button>
+            <button class="btn-wd" onclick="act('savings','withdraw')">Withdraw</button>
+          </div>
+          <button class="btn-interest" onclick="applyInterest()">Apply Interest</button>
+        </div>
+        <div class="msg" id="msg-savings"></div>
+      </div>
+
+    </div>
+
+    <!-- Statement -->
+    <div class="statement-panel">
+      <div class="statement-tabs">
+        <button class="stab active" onclick="switchStatement('checking')">Checking Statement</button>
+        <button class="stab" onclick="switchStatement('savings')">Savings Statement</button>
+      </div>
+      <div class="statement-body" id="statement-body">
+        <div class="empty-state">No transactions yet — make a deposit or withdrawal above.</div>
+      </div>
+      <div class="statement-footer" id="statement-footer"></div>
+    </div>
+
+    <!-- Prototype Info Box -->
+    <div class="proto-box">
+      <div class="proto-title">⬡ Prototype Chain</div>
+      <div class="proto-chain">
+        <div class="proto-node parent">BankAccount.prototype<div class="proto-methods">deposit() · withdraw() · getBalance() · balanceDisplay() · printStatement()</div></div>
+        <div class="proto-arrow">inherits ↓</div>
+        <div class="proto-node child">SavingsAccount.prototype<div class="proto-methods">applyInterest() <span class="inherited">+ all above inherited ✅</span></div></div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="bank.js"></script>
+</body>
+</html>
